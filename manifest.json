@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Chess.com to Lichess Analysis",
+    "version": "1.0",
+    "description": "Exports the PGN of Chess.com and Chessgames.com games to Lichess for analysis.",
+    "permissions": ["scripting", "activeTab"],
+    "action": {
+      "default_popup": "popup/popup.html",
+      "default_icon": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+      }
+    },
+    "icons": {
+      "16": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png"
+    },
+    "author": "Robert Meekins",
+    "host_permissions": [
+      "https://*.chess.com/*", "https://*.chessgames.com/*", "https://*.lichess.org/*"
+    ],
+    "background": {
+      "service_worker": "scripts/background.js"
+    },
+    "content_scripts":[
+        {
+            "matches": ["https://*.chess.com/*", "https://*.chessgames.com/*" ],
+            "js":["scripts/content.js"]
+        }
+]
+  }
+  
